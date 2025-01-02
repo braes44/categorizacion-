@@ -1,21 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categorización de Sistemas</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Categorización de Sistemas Computarizados</h1>
-        <form id="form">
-            <div id="question-container"></div>
-            <button type="button" id="submit">Evaluar Riesgo</button>
-        </form>
-        <div id="result" class="result" style="display:none;"></div>
-    </div>
+function evaluateRisk() {
+    const responses = {
+        q1: document.querySelector('input[name="q1"]:checked')?.value,
+        q2: document.querySelector('input[name="q2"]:checked')?.value,
+        q3: document.querySelector('input[name="q3"]:checked')?.value,
+        q4: document.querySelector('input[name="q4"]:checked')?.value,
+        q5: document.querySelector('input[name="q5"]:checked')?.value
+    };
 
-    <script src="script.js"></script>
-</body>
-</html>
+    let riskLevel;
+    if (responses.q1 === "Sí" && responses.q2 === "No") {
+        riskLevel = "Categoría 3 (Bajo)";
+    } else if (responses.q1 === "Sí" && responses.q5 === "Sí" && responses.q4 === "No") {
+        riskLevel = "Categoría 4 (Medio)";
+    } else if (responses.q1 === "Sí" && responses.q3 === "Sí") {
+        riskLevel = "Categoría 5 (Alto)";
+    } else {
+        riskLevel = "Indeterminado";
+    }
+
+    const resultDiv = document.getElementById("result");
+    resultDiv.textContent = `Nivel de riesgo: ${riskLevel}`;
+    resultDiv.style.display = "block";
+}
