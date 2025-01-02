@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorización de Sistemas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e7f5e9;
+            color: #2e7d32;
+            border: 1px solid #c4e5c7;
+            border-radius: 5px;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Categorización de Sistemas Computarizados</h1>
+        <form id="form">
+            <div class="question">
+                <p>1. ¿El sistema genera o utiliza registros electrónicos regulados?</p>
+                <label><input type="radio" name="q1" value="Sí"> Sí</label>
+                <label><input type="radio" name="q1" value="No"> No</label>
+            </div>
+            <div class="question">
+                <p>2. ¿El sistema está asociado a un panel analógico?</p>
+                <label><input type="radio" name="q2" value="Sí"> Sí</label>
+                <label><input type="radio" name="q2" value="No"> No</label>
+            </div>
+            <div class="question">
+                <p>3. ¿El sistema fue desarrollado dentro de la compañía?</p>
+                <label><input type="radio" name="q3" value="Sí"> Sí</label>
+                <label><input type="radio" name="q3" value="No"> No</label>
+            </div>
+            <div class="question">
+                <p>4. ¿El proveedor ofrece configuraciones personalizadas?</p>
+                <label><input type="radio" name="q4" value="Sí"> Sí</label>
+                <label><input type="radio" name="q4" value="No"> No</label>
+            </div>
+            <div class="question">
+                <p>5. ¿Los datos generados son seguros y no modificables?</p>
+                <label><input type="radio" name="q5" value="Sí"> Sí</label>
+                <label><input type="radio" name="q5" value="No"> No</label>
+            </div>
+        </form>
+        <div id="result" class="result"></div>
+    </div>
+    <script>
+        const form = document.getElementById('form');
+        const resultDiv = document.getElementById('result');
+
+        function evaluateRisk() {
+            const responses = {
+                q1: document.querySelector('input[name="q1"]:checked')?.value,
+                q2: document.querySelector('input[name="q2"]:checked')?.value,
+                q3: document.querySelector('input[name="q3"]:checked')?.value,
+                q4: document.querySelector('input[name="q4"]:checked')?.value,
+                q5: document.querySelector('input[name="q5"]:checked')?.value
+            };
+
+            let riskLevel;
+            if (responses.q1 === "Sí" && responses.q2 === "No") {
+                riskLevel = "Categoría 3 (Bajo)";
+            } else if (responses.q1 === "Sí" && responses.q5 === "Sí" && responses.q4 === "No") {
+                riskLevel = "Categoría 4 (Medio)";
+            } else if (responses.q1 === "Sí" && responses.q3 === "Sí") {
+                riskLevel = "Categoría 5 (Alto)";
+            } else {
+                riskLevel = "Indeterminado";
+            }
+
+            resultDiv.textContent = `Nivel de riesgo: ${riskLevel}`;
+            resultDiv.style.display = "block";
+        }
+
+        form.addEventListener('change', evaluateRisk);
+    </script>
+</body>
+</html>
