@@ -15,19 +15,19 @@ function evaluateRisk() {
 
     let riskLevel;
     if (responses.q4 === "Sí") {
-        riskLevel = "Categoría 3 (Bajo)";
+        riskLevel = "Categoría 3 (Bajo) para mas informacion ingresa en https://solucionesfarmaceuticas.my.canva.site/";
     } else if (responses.q6 === "No") {
-        riskLevel = "Categoría 3 (Bajo)";
+        riskLevel = "Categoría 3 (Bajo) para mas informacion ingresa en https://solucionesfarmaceuticas.my.canva.site/";
     } else if (responses.q5 === "Sí" && responses.q6 === "Sí" && responses.q2 === "No") {
-        riskLevel = "Categoría 3 (Bajo)";
+        riskLevel = "Categoría 3 (Bajo) para mas informacion ingresa en https://solucionesfarmaceuticas.my.canva.site/";
     } else if (responses.q5 === "Sí" && responses.q6 === "Sí" && responses.q2 === "Sí") {
-        riskLevel = "Categoría 4 (Medio)";
+        riskLevel = "Categoría 4 (Medio) para mas informacion ingresa en https://solucionesfarmaceuticas.my.canva.site/";
     } else if (responses.q4 === "No" && responses.q5 === "No" && responses.q18 === "Sí" && responses.q29 === "No") {
-        riskLevel = "Categoría 5 (Alto)";
+        riskLevel = "Categoría 5 (Alto) para mas informacion ingresa en https://solucionesfarmaceuticas.my.canva.site/";
     } else if (responses.q6 === "Sí" && responses.q24 === "Sí" && responses.q29 === "Sí" && responses.q30 === "No") {
-        riskLevel = "Categoría 4 (Medio)";
+        riskLevel = "Categoría 4 (Medio) para mas informacion ingresa en https://solucionesfarmaceuticas.my.canva.site/";
     } else if (responses.q6 === "Sí" && responses.q24 === "Sí" && responses.q29 === "Sí" && responses.q30 === "Sí") {
-        riskLevel = "Categoría 5 (Alto)";
+        riskLevel = "Categoría 5 (Alto) para mas informacion ingresa en https://solucionesfarmaceuticas.my.canva.site/";
     } else {
         riskLevel = "Completa bien las preguntas";
     }
